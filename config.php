@@ -1,0 +1,3 @@
+<?php
+$TARIF_BASE_CONSULTATION = 50;
+?>
