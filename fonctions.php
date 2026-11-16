@@ -2,13 +2,15 @@
 include 'config.php';
 function calculerFacture(int $age, int $TARIF_BASE_CONSULTATION)
 {
-    if($age > 65){
-        $TARIF_BASE_CONSULTATION = $TARIF_BASE_CONSULTATION * 1.20;
+    if ($age > 65) {
+        return $TARIF_BASE_CONSULTATION * 1.20;
+    } else {
+        return $TARIF_BASE_CONSULTATION;
     }
-    return $TARIF_BASE_CONSULTATION;
 }
 
-function getBadgeService(string $code):array{
+function getBadgeService(string $code): array
+{
     switch ($code) {
         case 'CARDIO':
             return ['libelle' => 'Cardiologie', 'classe' => 'badge-cardio'];
@@ -21,7 +23,8 @@ function getBadgeService(string $code):array{
     }
 }
 
-function getLibelleUrgence(string $lib):array{
+function getLibelleUrgence(string $lib): array
+{
     switch ($lib) {
         case 'ROUGE':
             return ['urgence' => 'urgence absolue'];
@@ -35,7 +38,7 @@ function getLibelleUrgence(string $lib):array{
 }
 function filtrerUrgences(array $patients): array
 {
-    return array_filter($patients, fn(array $patients) : bool => ($patients['urgence']) === 'ROUGE');
+    return array_filter($patients, fn(array $patients): bool => ($patients['urgence']) === 'ROUGE');
 }
 
 
